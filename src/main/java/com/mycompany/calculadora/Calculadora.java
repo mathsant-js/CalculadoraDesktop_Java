@@ -15,7 +15,7 @@ import java.awt.event.*;
 public class Calculadora extends JFrame{
     JLabel rotulo1, rotulo2, exibir;
     JTextField texto1, texto2;
-    JButton somar, subtrair, multiplicar, dividir;
+    JButton somar, subtrair, multiplicar, dividir, limpar, ocultar;
         public Calculadora() {
             super("Calculadora");
             Container tela = getContentPane();
@@ -31,6 +31,8 @@ public class Calculadora extends JFrame{
             subtrair = new JButton("Subtrair");
             multiplicar = new JButton("Vezes");
             dividir = new JButton("Dividir");
+            limpar = new JButton("Limpar");
+            ocultar = new JButton("Ocultar");
             
             rotulo1.setBounds(50, 20, 100, 20);
             rotulo2.setBounds(50, 60, 100, 20);
@@ -41,6 +43,8 @@ public class Calculadora extends JFrame{
             subtrair.setBounds(140, 100, 80, 20);
             multiplicar.setBounds(230, 100, 80, 20);
             dividir.setBounds(320, 100, 80, 20);
+            limpar.setBounds(140, 140, 80, 20);
+            ocultar.setBounds(230, 140, 80, 20);
             
             somar.addActionListener(
                     new ActionListener(){
@@ -107,6 +111,25 @@ public class Calculadora extends JFrame{
                     }
             );
             
+            limpar.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            texto1.setText(null);
+                            texto2.setText(null);
+                            texto1.requestFocus();
+                        }
+                    }
+            );
+            
+            ocultar.addActionListener(
+                    new ActionListener() {
+                        public void actionPerformed(ActionEvent e){
+                            rotulo1.setEnabled(false);
+                            rotulo2.setEnabled(false);
+                        }
+                    }
+            );
+            
             tela.add(rotulo1);
             tela.add(rotulo2);
             tela.add(texto1);
@@ -116,6 +139,8 @@ public class Calculadora extends JFrame{
             tela.add(subtrair);
             tela.add(multiplicar);
             tela.add(dividir);
+            tela.add(limpar);
+            tela.add(ocultar);
             
             setSize(450, 250);
             setVisible(true);
